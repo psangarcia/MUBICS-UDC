@@ -1,0 +1,21 @@
+# treatment: treatment analyzed (spnt: spontaneous HCC, gbe: GBE-exposed HCC)
+# rep: number of replicate
+FileNames	treatment	rep
+GSM3876418.CEL.gz	control	1
+GSM3876420.CEL.gz	control	2
+GSM3876422.CEL.gz	control	3
+GSM3876424.CEL.gz	control	4
+GSM3876426.CEL.gz	control	5
+GSM3876428.CEL.gz	control	6
+GSM3876430.CEL.gz	spnt	1
+GSM3876432.CEL.gz	spnt	2
+GSM3876434.CEL.gz	spnt	3
+GSM3876436.CEL.gz	spnt	4
+GSM3876439.CEL.gz	spnt	5
+GSM3876441.CEL.gz	spnt	6
+GSM3876443.CEL.gz	gbe	1
+GSM3876445.CEL.gz	gbe	2
+GSM3876447.CEL.gz	gbe	3
+GSM3876449.CEL.gz	gbe	4
+GSM3876451.CEL.gz	gbe	5
+GSM3876453.CEL.gz	gbe	6
