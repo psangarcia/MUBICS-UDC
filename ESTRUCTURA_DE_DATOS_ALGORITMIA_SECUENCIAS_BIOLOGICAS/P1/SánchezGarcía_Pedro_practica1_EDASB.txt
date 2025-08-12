@@ -1,0 +1,43 @@
+Estructura de datos y algoritmia para secuencias biológicas
+
+					Práctica 1. Alineamiento de secuencias con Biopython
+
+							Pedro Sánchez García
+
+
+Introducción:
+
+Para esta práctica 1, personalmente he optado por emplear unas secuencias de la proteína S del SARS-CoV-2 en formato FASTA,
+que corresponden con el original de Wuhan y con la variante omicron responsable de las olas recientes en casos registrados.
+Las resoluciones se realizan con el módulo pairwise2 de Biopython, donde entra en juego el tipo de alineamiento (global o local)
+en el campo align (pairwise2.align.globalds / pairwise2.align.localds), las penalizaciones para indels y gaps según corresponda, 
+así como la matriz de score para el algoritmo empleado en cada caso. 
+  
+
+BA5E (Find a Highest-Scoring Alignment of Two Strings):
+
+El fundamento de este algoritmo radica en que se encuentra el score más elevado para el alineamiento global entre 2 cadenas empleando la matriz BLOSUM62 de score, con una penalización de 5 por los indels existentes.
+Se plantea una resolución con el módulo pairwise2. Dado que se trabajan con secuencias en formato FASTA (ubicadas en mismo directorio 
+que el de trabajo), es preciso la importación de SeqIO para la lectura de los ficheros FASTA para las 2 secuencias, así como la
+importación de la correspondiente matriz BLOSUM62. Posteriormente, se establece un bucle para la iteración en cada posición de las
+secuencias de trabajo, con un alineamiento global y una puntuación de 5 para penalización de indels (tanto por apertura como por extensión de estos).
+Por último, se proporciona el resultado final del algoritmo por pantalla.
+ 
+
+BA5F (Find a Highest-Scoring Local Alignment of Two Strings):
+
+El fundamento de este algoritmo radica en que se encuentra el score más elevado para un alineamiento local entre 2 cadenas empleando la matriz PAM250 de score, con una penalización de 5 por los indels existentes.
+Se plantea una resolución con el módulo pairwise2 con las secuencias en formato FASTA (ubicadas en mismo directorio 
+que el de trabajo), importando SeqIO para la lectura de los ficheros FASTA y la importación de la correspondiente matriz PAM250. Posteriormente, se establece un bucle para la iteración en cada posición de las secuencias de trabajo, con un alineamiento local y una puntuación de 5 para penalización de indels (tanto por apertura como por extensión de estos). Finalmente, se proporciona el resultado del algoritmo por pantalla.
+
+
+BA5G (Compute the Edit Distance Between Two Strings):
+
+Este problema trata la distancia de edición vista en las sesiones expositivas de clase. Se debe tener en cuenta que el objetivo es alcanzar, para 2 secuencias determinadas, aquel número mínimo de operaciones de edición (sustitución, inserción, selección) que permita la conversión de una secuencia en otra. Para el caso que he elegido, es particularmente interesante, pues nos da un resultado con el que podemos apreciar la tendencia en el número de mutaciones que han tenido lugar ente el SARS-CoV-2 original de Wuhan y la variante omicron. Se genera una resolución modificando los parámetros de match y de gaps. Se trata de un caso particular con alineamiento global, donde debemos modificar manualmente esos parámetros a 0 y -1 respectivamente, junto con la penalización y extensión de gaps a -1 del mismo modo. El aspecto final de la función sería:
+pairwise2.align.globalms(secuencia1, secuencia2, 0, -1, open=-1, extend=-1). Por último, se proporciona el resultado del cálculo por pantalla tras aplicar el cálculo de la distancia Levenshtein en las 2 secuencias.
+
+BA5J (Align Two Strings Using Affine Gap Penalties):
+
+Este último problema trata un algoritmo en el que se tiene en cuenta la penalización de gaps (se definen como espacios contiguos en el alineamiento de secuencias) para el alineamiento en las secuencias. El objetivo es lograr el máximo score para el alineamiento global de las 2 secuencias teniendo en cuenta la penalización por gaps, que será de 11 para lo que respecta a la apertura de estos por el algoritmo y a 1 para el caso de las extensiones. 
+Por tanto, se importan los módulos SeqIO, se carga la matriz BLOSUM62 y se indica el alineamiento global, junto con el valor de 11 en la penalización por apertura y de 1 por extensión de gaps. Finalmente, se proporciona el resultado del algoritmo tras la iteración comentada anteriormente.
+
