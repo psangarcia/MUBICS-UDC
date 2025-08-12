@@ -1,8 +1,0 @@
-
-- Installing Python, Biopython
-- Installing Weka
-
-
-classification ds: https://archive.ics.uci.edu/ml/datasets.html
-
-
